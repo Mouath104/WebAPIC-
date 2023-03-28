@@ -1,3 +1,4 @@
+global using WebAPIC_.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
