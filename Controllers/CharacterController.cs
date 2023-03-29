@@ -27,13 +27,13 @@ namespace WebAPIC_.Controllers
         //     return Ok(assasins[0]);
         // }
         [HttpGet("{pk}")]
-        public ActionResult<Character> Getsingle(int pk){
-            return Ok(_CharService.Getsingle(pk));
+        public async Task<ActionResult<Character>> Getsingle(int pk){
+            return Ok(await _CharService.Getsingle(pk));
         }
 
         [HttpGet("getall")]
-        public ActionResult<Character> Getall(){
-            return Ok(_CharService.Getallser());
+        public async Task<ActionResult<Character>> Getall(){
+            return Ok(await _CharService.Getallser());
         }
 
         [HttpPost]

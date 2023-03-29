@@ -18,17 +18,17 @@ namespace WebAPIC_.Services
             assasins.Add(charr);
         }
 
-        public List<Character> Getallser()
+        public async Task<List<Character>> Getallser()
         {
-            return assasins;
+            return  assasins;
         }
 
-        public Character Getsingle(int pk)
+        public async Task<Character> Getsingle(int pk)
         {
             var charr = assasins.FirstOrDefault(x => x.id == pk);
 
             if (charr is not null){
-                return charr;
+                return  charr;
             }
             throw new Exception("Character Not Found!");
         }
