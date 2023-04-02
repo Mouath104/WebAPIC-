@@ -10,11 +10,6 @@ namespace WebAPIC_.Controllers
     [Route("api/[controller]")] // this is the rout that calls the controller indicates api/Character
     public class CharacterController : ControllerBase
     {
-        private static List<Character> assasins = new List<Character> {
-            new Character(),
-            new Character{id = 1, Name = "default2"}
-        };
-
         private readonly ICharacterService _CharService;
 
         public CharacterController(ICharacterService CharService)
@@ -27,18 +22,27 @@ namespace WebAPIC_.Controllers
         //     return Ok(assasins[0]);
         // }
         [HttpGet("{pk}")]
-        public async Task<ActionResult<Character>> Getsingle(int pk){
+        public async Task<ActionResult<ServiceResponse<Character>>> Getsingle(int pk){
             return Ok(await _CharService.Getsingle(pk));
         }
 
         [HttpGet("getall")]
-        public async Task<ActionResult<Character>> Getall(){
+        public async Task<ActionResult<ServiceResponse<Character>>> Getall(){
             return Ok(await _CharService.Getallser());
         }
 
         [HttpPost]
         public void AddChar (Character charr){
             _CharService.AddChar(charr);
+        }
+
+        [HttpPut("{updateChar}")]
+        public void UpdateChar(Character charr){
+            _CharService.UpdateChar(charr);
+        }
+        [HttpDelete("{pk}")]
+        public ActionResult<bool> DeleteCharCont(int pk){
+            return Ok(_CharService.DeleteChar(pk));
         }
     }
 }
