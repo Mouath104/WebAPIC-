@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+// using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebAPIC_.Data;
 
@@ -12,8 +13,14 @@ namespace WebAPIC_.Services
     {
 
         private readonly DataContext _context;
+        // private readonly IMapper _mapper;
+        // public CharacterService(IMapper mapper,DataContext context)
+        // {   
+        //     _context = context;
+        //     _mapper = mapper;
+        // }
         public CharacterService(DataContext context)
-        {
+        {   
             _context = context;
         }
 
@@ -31,22 +38,19 @@ namespace WebAPIC_.Services
             // return serviceresponse;
         }
 
-        public async Task<ServiceResponse<List<Character>>> Getallser()
+        public async Task<List<Character>> Getallser()
         {
-            var dbCharacters = await _context.characters.ToListAsync(); 
-            var serviceresponse = new ServiceResponse<List<Character>>();
-            
-            serviceresponse.Data = dbCharacters.Select(c => );
-            return  serviceresponse;
+            var dbCharacters = await _context.characters.ToListAsync();
+            return dbCharacters;
         }
 
-        public async Task<ServiceResponse<Character>> Getsingle(int pk)
+        public async Task<Character> Getsingle(int pk)
         {
-            var charr = assasins.FirstOrDefault(x => x.id == pk);
-            var serviceresponse = new ServiceResponse<Character>();
-            serviceresponse.Data = charr;
+            var dbcharr = await _context.characters.FirstOrDefaultAsync(c => c.id == pk);
+            // var serviceresponse = new ServiceResponse<Character>();
+            // serviceresponse.Data = charr;
 
-            return serviceresponse; // no need for below, as the Data could be nullable
+            return dbcharr; // no need for below, as the Data could be nullable
             // if (charr is not null){
             //     return  serviceresponse;
             // }

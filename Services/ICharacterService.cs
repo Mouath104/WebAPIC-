@@ -8,9 +8,9 @@ namespace WebAPIC_.Services
 {
     public interface ICharacterService
     {
-        public Task<ServiceResponse<List<Character>>> Getallser();
+        public Task<List<Character>> Getallser();
         public void AddChar (Character charr);
-        public Task<ServiceResponse<Character>> Getsingle(int pk);
+        public Task<Character> Getsingle(int pk);
         public void UpdateChar (Character updatedChar);
         public bool DeleteChar (int pk);
     }

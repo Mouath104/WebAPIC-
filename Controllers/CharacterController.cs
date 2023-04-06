@@ -22,7 +22,7 @@ namespace WebAPIC_.Controllers
         //     return Ok(assasins[0]);
         // }
         [HttpGet("{pk}")]
-        public async Task<ActionResult<ServiceResponse<Character>>> Getsingle(int pk){
+        public async Task<ActionResult<Character>> Getsingle(int pk){
             return Ok(await _CharService.Getsingle(pk));
         }
 
