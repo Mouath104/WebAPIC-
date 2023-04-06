@@ -1,3 +1,14 @@
 # creating : dotnet new wepapi
 # run : dotnet watch run
 # VS Code Extinsions : Pretiier, Icon C# , and C# Extinsions
+
+# Packages:
+ - dotnet add package Swashbuckle.AspNetCore.SwaggerUI
+ - dotnet add package Microsoft.EntityFrameworkCore.SQLServer
+ - dotnet add package Microsoft.EntityFrameworkCore
+ - dotnet add package Microsoft.EntityFrameworkCore.Design
+ - dotnet tool install --global dotnet-ef
+
+ # migrations:
+  - dotnet ef migrations add first
+  - dotnet ef database update

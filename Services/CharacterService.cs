@@ -3,15 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebAPIC_.Data;
 
 namespace WebAPIC_.Services
 {
+
     public class CharacterService : ICharacterService
     {
-            private static List<Character> assasins = new List<Character> {
+
+        private readonly DataContext _context;
+        public CharacterService(DataContext context)
+        {
+            _context = context;
+        }
+
+        private static List<Character> assasins = new List<Character> {
             new Character(),
             new Character{id = 1,Name = "default2"}
         };
+        
 
         public void AddChar(Character charr)
         {
@@ -23,6 +33,7 @@ namespace WebAPIC_.Services
 
         public async Task<ServiceResponse<List<Character>>> Getallser()
         {
+            var dbCharacters = await _context.characters.ToListAsync();
             var serviceresponse = new ServiceResponse<List<Character>>();
             serviceresponse.Data = assasins;
             return  serviceresponse;
