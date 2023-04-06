@@ -33,9 +33,10 @@ namespace WebAPIC_.Services
 
         public async Task<ServiceResponse<List<Character>>> Getallser()
         {
-            var dbCharacters = await _context.characters.ToListAsync();
+            var dbCharacters = await _context.characters.ToListAsync(); 
             var serviceresponse = new ServiceResponse<List<Character>>();
-            serviceresponse.Data = assasins;
+            
+            serviceresponse.Data = dbCharacters.Select(c => );
             return  serviceresponse;
         }
 
